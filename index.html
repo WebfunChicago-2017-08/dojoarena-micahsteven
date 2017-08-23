@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+    <title>Disappearing Ninja</title>
+
+    <script>
+        $(document).ready(function () {
+            $('.arenaoption').on("mouseenter", function () {
+                console.log("mouseenter");
+                var backgroundImage = "url('images/" + $(this).text() + ".jpg')";
+                $('#wrapper').css('background-image', backgroundImage);
+            })
+
+            $('.arenaoption').on("mouseleave", function () {
+                    console.log("mouseleave");
+                    if(!hasBackground){
+                        $('#wrapper').css('background-image', 'none');
+                    }
+                })
+
+                var hasBackground = false;
+            $('.arenaoption').on("click", function () {   // CLICK FUNCTION
+                hasBackground = true;
+                var backgroundImage = "url('images/" + $(this).text() + ".jpg')";
+                $('#wrapper').css('background-image', backgroundImage);
+                // remove menu, load next menu;
+                console.log('next menu');
+                // // $('#arenamenu').off("mouseleave", "#arenaoption", function () {
+                // //     console.log("mouseleave");
+                //     $('#wrapper').css('background-image', 'none');
+                // })
+                $('#arenamenu').css("display", "none");
+                $('#playermenu').show();
+                })
+            $('.player1').on("change", function (){
+                var p1image = "url(
+            })
+
+
+            })
+
+    </script>
+
+    <style>
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+
+        #wrapper {
+            width: 95%;
+            height: 700px;
+            border: 10px solid #666;
+            background-color: black;
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 100px;
+        }
+
+        #arenamenu {
+            width: 300px;
+            height: 200px;
+            border: 10px solid #666;
+            border-radius: 10px;
+            background-color: #888;
+            text-align: center;
+            margin: auto;
+        }
+
+        #playermenu {
+            width: 300px;
+            height: 200px;
+            border: 10px solid #666;
+            border-radius: 10px;
+            background-color: #888;
+            text-align: center;
+            margin: auto;
+            display: none;
+        }
+
+        h1 {
+            color: #e4b43f;
+            text-shadow: 2px 2px 0px #735918;
+        }
+
+        .arenaoption {
+            display: inline-block;
+            background-color: #c3c3c3;
+            margin: 2px 1px;
+            width: 75px;
+            height: 28px;
+            vertical-align: top;
+            color: black;
+            padding-top: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="arenamenu">
+            <h1>Select Arena</h1>
+            <div class="arenaoption">beach</div>
+            <div class="arenaoption">earth</div>
+            <div class="arenaoption">dojo</div>
+            <div class="arenaoption">forest</div>
+            <div class="arenaoption">matrix</div>
+            <div class="arenaoption">snow</div>
+        </div>
+
+        <div id="playermenu">
+            <h1>Select Player</h1>
+            <select id = "player1">
+                <option value="select_ninja">Select Ninja</option>
+                <option value="donny">Donny</option>
+                <option value="leo">Leo</option>
+                <option value="mikey">Mikey</option>
+                <option value="raphael">Raphael</option>
+            </select>
+            <select id = "player2">
+                <option value="select_ninja">Select Ninja</option>
+                <option value="donny">Donny</option>
+                <option value="leo">Leo</option>
+                <option value="mikey">Mikey</option>
+                <option value="raphael">Raphael</option>
+            </select>
+            
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

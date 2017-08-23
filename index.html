@@ -13,39 +13,48 @@
     <script>
         $(document).ready(function () {
             $('.arenaoption').on("mouseenter", function () {
-                console.log("mouseenter");
                 var backgroundImage = "url('images/" + $(this).text() + ".jpg')";
                 $('#wrapper').css('background-image', backgroundImage);
             })
 
             $('.arenaoption').on("mouseleave", function () {
-                    console.log("mouseleave");
-                    if(!hasBackground){
-                        $('#wrapper').css('background-image', 'none');
-                    }
-                })
+                if (!hasBackground) {
+                    $('#wrapper').css('background-image', 'none');
+                }
+            })
 
-                var hasBackground = false;
+            var hasBackground = false;
             $('.arenaoption').on("click", function () {   // CLICK FUNCTION
                 hasBackground = true;
                 var backgroundImage = "url('images/" + $(this).text() + ".jpg')";
                 $('#wrapper').css('background-image', backgroundImage);
-                // remove menu, load next menu;
-                console.log('next menu');
-                // // $('#arenamenu').off("mouseleave", "#arenaoption", function () {
-                // //     console.log("mouseleave");
-                //     $('#wrapper').css('background-image', 'none');
-                // })
                 $('#arenamenu').css("display", "none");
                 $('#playermenu').show();
-                })
-            $('.player1').on("change", function (){
-                var p1image = "url(
+            })
+            $('#player1').on("change", function () {
+                var notSelected = "none";
+                var selectedPlayer = "url('images/" + $(this).find(":selected").val() + ".png')";
+                if ($(this).find(":selected").val() !== "select_ninja") {
+                    $('#as1').css('background-image', selectedPlayer);
+                }
+                if ($(this).find(":selected").val() === "select_ninja") {
+                    $('#as1').css('background-image', notSelected);
+                }
+
+            })
+            $('#player2').on("change", function () {
+                var notSelected = "none";
+                var selectedPlayer = "url('images/" + $(this).find(":selected").val() + ".png')";
+                if ($(this).find(":selected").val() !== "select_ninja") {
+                    $('#as2').css('background-image', selectedPlayer);
+                }
+                if ($(this).find(":selected").val() === "select_ninja") {
+                    $('#as2').css('background-image', notSelected);
+                }
+
             })
 
-
-            })
-
+        })
     </script>
 
     <style>
@@ -70,7 +79,7 @@
             height: 200px;
             border: 10px solid #666;
             border-radius: 10px;
-            background-color: #888;
+            background-color:rgba(200,200,200,.8);
             text-align: center;
             margin: auto;
         }
@@ -80,7 +89,7 @@
             height: 200px;
             border: 10px solid #666;
             border-radius: 10px;
-            background-color: #888;
+            background-color:rgba(200,200,200,.8);
             text-align: center;
             margin: auto;
             display: none;
@@ -101,6 +110,18 @@
             color: black;
             padding-top: 10px;
         }
+
+        .avatarspace {
+            margin: 0px;
+            margin-top: 10px;
+            width: 45%;
+            height: 400px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
     </style>
 
 
@@ -120,24 +141,27 @@
 
         <div id="playermenu">
             <h1>Select Player</h1>
-            <select id = "player1">
+            <select id="player1">
                 <option value="select_ninja">Select Ninja</option>
                 <option value="donny">Donny</option>
                 <option value="leo">Leo</option>
                 <option value="mikey">Mikey</option>
                 <option value="raphael">Raphael</option>
             </select>
-            <select id = "player2">
+            <select id="player2">
                 <option value="select_ninja">Select Ninja</option>
                 <option value="donny">Donny</option>
                 <option value="leo">Leo</option>
                 <option value="mikey">Mikey</option>
                 <option value="raphael">Raphael</option>
             </select>
-            
+
         </div>
 
-
+        <div class="avatarspace" id="as1">
+        </div>
+        <div class="avatarspace" id="as2">
+        </div>
     </div>
 
 </body>
